@@ -1,7 +1,6 @@
 import React from "react";
 
-
-function Entry(props){
+function Entry(props) {
     return (<div className="term">
     <dt>
       <span className="emoji" role="img" aria-label="Tense Biceps">
@@ -10,8 +9,9 @@ function Entry(props){
       <span>{props.name}</span>
     </dt>
     <dd>
-    {props.meaning}
+      {props.meaning}
     </dd>
   </div>)
 }
+
 export default Entry;
