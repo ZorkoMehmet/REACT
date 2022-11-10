@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 
-var userIsRegistered = false;
+var userIsRegistered = true;
 
 function App() {
   return (

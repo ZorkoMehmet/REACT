@@ -1,20 +1,15 @@
 import React from "react";
-import Input from "./Input";
-import App from "./App";
 
 function Login(props) {
-  return props.conditional ? (
+  return (
     <form className="form">
-      <Input type="text" placeholder="Username" />
-      <Input type="password" placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
-  ) : (
-    <form className="form">
-      <Input type="text" placeholder="Username" />
-      <Input type="password" placeholder="Password" />
-      <input type="password" placeholder="Confirm Password" />
-      <button type="submit">Register</button>
+      <input type="text" placeholder="Username" />
+      <input type="password" placeholder="Password" />
+      {!props.userIsRegistered && (
+        <input type="password" placeholder="Confirm Password" />
+      )}
+
+      <button type="submit">{props.userIsRegistered ? "Login" : "Register"}</button>
     </form>
   );
 }
