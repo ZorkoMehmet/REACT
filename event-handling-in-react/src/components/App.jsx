@@ -5,47 +5,25 @@ function App() {
   const [headingName, setHeadingName] = useState("");
   const [headingSurname, setHeadingSurname] = useState("");
 
-  
-  const [isMouseOver, setMouseOver] = useState(false);
-  const [inputedData, setInputtedData] = useState("");
-
-  function btnClicked() {
-    setHeadingName(inputedData);
-    setHeadingSurname(inputedData);
+  function handleChangeName(event) {
+    setHeadingName(event.target.value);
   }
-
-  function handleChange(event) {
-    setInputtedData(event.target.value);
-  }
-
-  function handleMouseOver() {
-    setMouseOver(true);
-  }
-  function handleMouseOut() {
-    setMouseOver(false);
+  function handleChangeSurname(event) {
+    setHeadingSurname(event.target.value);
   }
 
   return (
     <div className="container">
-      <h1>Hello {headingName} {headingSurname}</h1>
+      <h1>
+        Hello {headingName} {headingSurname}
+      </h1>
+      <input onChange={handleChangeName} type="text" placeholder="Name?" />
       <input
-        onChange={handleChange}
-        type="text"
-        placeholder="Name?"
-      />
-      <input
-        onChange={handleChange}
+        onChange={handleChangeSurname}
         type="text"
         placeholder="Surname?"
       />
-      <button
-        style={{ backgroundColor: isMouseOver ? "black" : "white" }}
-        onClick={btnClicked}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        Submit
-      </button>
+      <button>Submit</button>
     </div>
   );
 }
