@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -6,16 +7,15 @@ function App() {
   function handleChange(event) {
     const newValue = event.target.value;
     setInputValue(newValue);
-
   }
 
   const [items, setItems] = useState([]);
 
   function handleClick() {
-    setItems((prevValue) => {
-        return [...prevValue, inputValue]
-    })
-    setInputValue("")
+    setItems((prevItems) => {
+      return [...prevItems, inputValue];
+    });
+    setInputValue("");
   }
 
   return (
@@ -24,16 +24,16 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input onChange={handleChange} type="text" />
+        <input onChange={handleChange} type="text" value={inputValue} />
         <button onClick={handleClick}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          {items.map((todoItem) => {
-            return <li>{todoItem}</li>;
-          })}
+          {items.map((todoItem) => (
+            <ToDoItem text={todoItem} />
+          ))}
         </ul>
       </div>
     </div>
